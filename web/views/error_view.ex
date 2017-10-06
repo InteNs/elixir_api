@@ -2,7 +2,7 @@ defmodule ElixirApi.ErrorView do
   use ElixirApi.Web, :view
 
   def render("404.json", _assigns) do
-    %{errors: %{detail: "Page not found"}}
+    %{errors: %{detail: "Page not found LOL"}}
   end
 
   def render("500.json", _assigns) do
