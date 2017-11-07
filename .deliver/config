@@ -1,7 +1,7 @@
 APP="elixir_api"
 
-BUILD_HOST="146.185.182.176"
-BUILD_USER="deploy"
+BUILD_HOST="railiotest"
+BUILD_USER="elixir_builder"
 BUILD_AT="/tmp/edeliver/$APP/builds"
 
 RELEASE_DIR="/tmp/edeliver/$APP/builds/_build/prod/rel/$APP"
@@ -9,17 +9,17 @@ RELEASE_DIR="/tmp/edeliver/$APP/builds/_build/prod/rel/$APP"
 # prevent re-installing node modules; this defaults to "."
 GIT_CLEAN_PATHS="_build rel priv/static"
 
-# STAGING_HOSTS="146.185.182.176"
-# STAGING_USER="deploy"
-# TEST_AT="/home/deploy/staging"
+STAGING_HOSTS="railiotest"
+STAGING_USER="darius"
+TEST_AT="/home/darius/railio_stag"
 
-PRODUCTION_HOSTS="146.185.182.176"
-PRODUCTION_USER="deploy"
-DELIVER_TO="/home/deploy"
+PRODUCTION_HOSTS="railiotest"
+PRODUCTION_USER="darius"
+DELIVER_TO="/home/darius/elixir_api/railio_prod"
 
 # For *Phoenix* projects, symlink prod.secret.exs to our tmp source
 pre_erlang_get_and_update_deps() {
-  local _prod_secret_path="/home/deploy/prod.secret.exs"
+  local _prod_secret_path="/home/elixir_builder/prod.secret.exs"
   if [ "$TARGET_MIX_ENV" = "prod" ]; then
     __sync_remote "
       ln -sfn '$_prod_secret_path' '$BUILD_AT/config/prod.secret.exs'
